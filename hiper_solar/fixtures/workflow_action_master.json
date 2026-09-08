@@ -1,0 +1,107 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 14:46:47.003146",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 14:46:47.005703",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 14:46:47.007023",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 16:50:38.453469",
+  "name": "Approved",
+  "workflow_action_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 16:55:17.614828",
+  "name": "Approving",
+  "workflow_action_name": "Approving"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-28 10:25:53.881652",
+  "name": "Not visited",
+  "workflow_action_name": "Not visited"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-29 14:21:37.498094",
+  "name": "Under Review",
+  "workflow_action_name": "Under Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-29 14:22:50.431618",
+  "name": "Sanctioned",
+  "workflow_action_name": "Sanctioned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-29 14:33:10.902876",
+  "name": "Commissioned",
+  "workflow_action_name": "Commissioned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-09-03 09:52:31.458302",
+  "name": "Replied",
+  "workflow_action_name": "Replied"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-09-03 09:53:05.739759",
+  "name": "Resolved",
+  "workflow_action_name": "Resolved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-27 16:49:49.146147",
+  "name": "processing",
+  "workflow_action_name": "processing"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-28 16:29:09.207137",
+  "name": "In Progress",
+  "workflow_action_name": "In Progress"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-28 16:31:32.572631",
+  "name": "Completed",
+  "workflow_action_name": "Completed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-28 10:27:04.163173",
+  "name": "Visited",
+  "workflow_action_name": "Visited"
+ }
+]
