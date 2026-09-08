@@ -1,0 +1,275 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "PAP-.YYYY.-.#####",
+ "creation": "2026-08-27 15:09:10.442161",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "basic_information_section",
+  "reference_id",
+  "company",
+  "project",
+  "status",
+  "column_break_basic_1",
+  "customer",
+  "installation_id",
+  "completed_date",
+  "notes_section",
+  "notes",
+  "documents_tab",
+  "installation_completion_report",
+  "commissioning_report",
+  "handover_certificate",
+  "warranty_certificate",
+  "column_break_doc_1",
+  "net_meter_application",
+  "net_meter_approval",
+  "electrical_inspection_report",
+  "completion_photos",
+  "billing_section",
+  "final_invoice",
+  "column_break_bill_1",
+  "payment_receipt",
+  "remarks_tab",
+  "remarks",
+  "section_break_pbsh",
+  "column_break_gdsv",
+  "internal_notes",
+  "column_break_more_1"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Data",
+   "label": "Reference ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Project ",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nIn Progress\nCompleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "installation_id.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "installation_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Installation ID",
+   "options": "Installation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completed_date",
+   "fieldtype": "Date",
+   "label": "Completed Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "installation_completion_report",
+   "fieldtype": "Attach",
+   "label": "Installation Completion Report"
+  },
+  {
+   "fieldname": "commissioning_report",
+   "fieldtype": "Attach",
+   "label": "Commissioning Report"
+  },
+  {
+   "fieldname": "handover_certificate",
+   "fieldtype": "Attach",
+   "label": "Customer Handover Certificate"
+  },
+  {
+   "fieldname": "warranty_certificate",
+   "fieldtype": "Attach",
+   "label": "Warranty Certificate"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_meter_application",
+   "fieldtype": "Attach",
+   "label": "Net Meter Application"
+  },
+  {
+   "fieldname": "net_meter_approval",
+   "fieldtype": "Attach",
+   "label": "Net Meter Approval"
+  },
+  {
+   "fieldname": "electrical_inspection_report",
+   "fieldtype": "Attach",
+   "label": "Electrical Inspection Report"
+  },
+  {
+   "fieldname": "completion_photos",
+   "fieldtype": "Attach",
+   "label": "Completion Photos"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "final_invoice",
+   "fieldtype": "Link",
+   "label": "Final Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "column_break_bill_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_receipt",
+   "fieldtype": "Attach",
+   "label": "Payment Receipt"
+  },
+  {
+   "fieldname": "remarks_tab",
+   "fieldtype": "Tab Break",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_pbsh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gdsv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "column_break_more_1",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:39.403415",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Paper Work",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,installation_id,completed_date",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

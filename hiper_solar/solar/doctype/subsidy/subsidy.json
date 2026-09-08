@@ -1,0 +1,311 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "SUB-.YYYY.-.#####",
+ "creation": "2026-08-27 15:09:34.791147",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "subsidy_id",
+  "company",
+  "application_date",
+  "project",
+  "paper_work",
+  "column_break_basic_1",
+  "customer",
+  "subsidy_scheme",
+  "government_agency",
+  "capacity_kw",
+  "subsidy_details_section",
+  "subsidy_percentage",
+  "status",
+  "column_break_subsidy_1",
+  "subsidy_amount",
+  "remarks",
+  "documents_tab",
+  "application_form",
+  "sanction_letter",
+  "bank_passbook",
+  "column_break_doc_1",
+  "id_proof",
+  "electricity_bill",
+  "subsidy_credit_proof",
+  "disbursement_tab",
+  "subsidy_disbursement",
+  "disbursement_totals_section",
+  "total_disbursed_amount",
+  "column_break_disb_1",
+  "balance_subsidy_amount",
+  "remarks_tab",
+  "additional_remarks",
+  "more_info_tab",
+  "column_break_lofh",
+  "column_break_more_1",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "subsidy_id",
+   "fieldtype": "Data",
+   "label": "Subsidy ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "application_date",
+   "fieldtype": "Date",
+   "label": "Application Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project ",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "paper_work",
+   "fieldtype": "Link",
+   "label": "Paper Work",
+   "options": "Paper Work"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "project_installation.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "subsidy_scheme",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Subsidy Scheme"
+  },
+  {
+   "fieldname": "government_agency",
+   "fieldtype": "Data",
+   "label": "Government / Agency"
+  },
+  {
+   "fieldname": "capacity_kw",
+   "fieldtype": "Float",
+   "label": "Capacity (kW)"
+  },
+  {
+   "fieldname": "subsidy_details_section",
+   "fieldtype": "Section Break",
+   "label": "Subsidy Details"
+  },
+  {
+   "fieldname": "subsidy_percentage",
+   "fieldtype": "Percent",
+   "label": "Subsidy Percentage"
+  },
+  {
+   "default": "Applied",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Applied\nUnder Review\nSanctioned",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_subsidy_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subsidy_amount",
+   "fieldtype": "Currency",
+   "label": "Subsidy Amount",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "application_form",
+   "fieldtype": "Attach",
+   "label": "Application Form"
+  },
+  {
+   "fieldname": "sanction_letter",
+   "fieldtype": "Attach",
+   "label": "Sanction Letter"
+  },
+  {
+   "fieldname": "bank_passbook",
+   "fieldtype": "Attach",
+   "label": "Bank Passbook / Cancelled Cheque"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "id_proof",
+   "fieldtype": "Attach",
+   "label": "ID Proof (Aadhaar / PAN)"
+  },
+  {
+   "fieldname": "electricity_bill",
+   "fieldtype": "Attach",
+   "label": "Electricity Bill"
+  },
+  {
+   "fieldname": "subsidy_credit_proof",
+   "fieldtype": "Attach",
+   "label": "Subsidy Credit Proof"
+  },
+  {
+   "fieldname": "disbursement_tab",
+   "fieldtype": "Tab Break",
+   "label": "Disbursement"
+  },
+  {
+   "fieldname": "subsidy_disbursement",
+   "fieldtype": "Table",
+   "label": "Subsidy Disbursement",
+   "options": "Subsidy Disbursement"
+  },
+  {
+   "fieldname": "disbursement_totals_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_disbursed_amount",
+   "fieldtype": "Currency",
+   "label": "Total Disbursed Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_disb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "balance_subsidy_amount",
+   "fieldtype": "Currency",
+   "label": "Balance Subsidy Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks_tab",
+   "fieldtype": "Tab Break",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "additional_remarks",
+   "fieldtype": "Text Editor",
+   "label": "Additional Remarks"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_lofh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_more_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:39.657191",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Subsidy",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,subsidy_scheme,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

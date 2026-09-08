@@ -1,0 +1,417 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "KKPW-.YYYY.-.#####",
+ "creation": "2026-08-27 15:10:09.372889",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "basic_details_section",
+  "kseb_office",
+  "transformer_number",
+  "section_office",
+  "column_break_basic_1",
+  "company",
+  "kseb_inspection_status",
+  "column_break_basic_2",
+  "customer",
+  "paper_work",
+  "application_number",
+  "kseb_details_section",
+  "site_address",
+  "mobile_number",
+  "system_type",
+  "column_break_kseb_1",
+  "district",
+  "email",
+  "capacity_kw",
+  "column_break_kseb_2",
+  "village_city",
+  "project",
+  "service_connection_type",
+  "status_completion_section",
+  "status_of_kseb_paper_work",
+  "column_break_status_1",
+  "completion_date",
+  "documents_tab",
+  "application_form",
+  "agreement_copy",
+  "single_line_diagram",
+  "column_break_doc_1",
+  "inspection_report",
+  "approval_letter",
+  "meter_testing_report",
+  "disbursement_tab",
+  "fees_section",
+  "application_fee",
+  "inspection_fee",
+  "column_break_fees_1",
+  "security_deposit",
+  "other_charges",
+  "column_break_fees_2",
+  "total_fees_paid",
+  "payment_reference",
+  "payment_date",
+  "remarks_tab",
+  "remarks",
+  "more_info_tab",
+  "column_break_mjae",
+  "internal_notes",
+  "column_break_more_1"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "kseb_office",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "KSEB Office",
+   "options": "KSEB Office",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transformer_number",
+   "fieldtype": "Data",
+   "label": "Transformer Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_office",
+   "fieldtype": "Link",
+   "label": "Section Office",
+   "options": "KSEB Office"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "kseb_inspection_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "KSEB Inspection Status",
+   "options": "Pending\nScheduled\nInspected\nApproved\nRejected",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "project_site.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "paper_work",
+   "fieldtype": "Link",
+   "label": "Paper Work",
+   "options": "Paper Work"
+  },
+  {
+   "fieldname": "application_number",
+   "fieldtype": "Data",
+   "label": "Application Number"
+  },
+  {
+   "fieldname": "kseb_details_section",
+   "fieldtype": "Section Break",
+   "label": "KSEB Details"
+  },
+  {
+   "fieldname": "site_address",
+   "fieldtype": "Small Text",
+   "label": "Site Address"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number",
+   "options": "Phone"
+  },
+  {
+   "default": "Grid-Tied",
+   "fieldname": "system_type",
+   "fieldtype": "Select",
+   "label": "System Type",
+   "options": "Grid-Tied\nOff-Grid\nHybrid"
+  },
+  {
+   "fieldname": "column_break_kseb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "District",
+   "options": "Thiruvananthapuram\nKollam\nPathanamthitta\nAlappuzha\nKottayam\nIdukki\nErnakulam\nThrissur\nPalakkad\nMalappuram\nKozhikode\nWayanad\nKannur\nKasaragod",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "capacity_kw",
+   "fieldtype": "Float",
+   "label": "Capacity (kW)"
+  },
+  {
+   "fieldname": "column_break_kseb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "village_city",
+   "fieldtype": "Data",
+   "label": "Village / City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_connection_type",
+   "fieldtype": "Select",
+   "label": "Service Connection Type",
+   "options": "Single Phase\nThree Phase\nLT\nHT"
+  },
+  {
+   "fieldname": "status_completion_section",
+   "fieldtype": "Section Break",
+   "label": "Status & Completion"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status_of_kseb_paper_work",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status of KSEB Paper Work",
+   "options": "Pending\nIn Progress\nCompleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "completion_date",
+   "fieldtype": "Date",
+   "label": "Completion Date"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "application_form",
+   "fieldtype": "Attach",
+   "label": "Application Form"
+  },
+  {
+   "fieldname": "agreement_copy",
+   "fieldtype": "Attach",
+   "label": "Agreement Copy"
+  },
+  {
+   "fieldname": "single_line_diagram",
+   "fieldtype": "Attach",
+   "label": "Single Line Diagram"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_report",
+   "fieldtype": "Attach",
+   "label": "Inspection Report"
+  },
+  {
+   "fieldname": "approval_letter",
+   "fieldtype": "Attach",
+   "label": "Approval Letter"
+  },
+  {
+   "fieldname": "meter_testing_report",
+   "fieldtype": "Attach",
+   "label": "Meter Testing Report"
+  },
+  {
+   "fieldname": "disbursement_tab",
+   "fieldtype": "Tab Break",
+   "label": "Disbursement"
+  },
+  {
+   "fieldname": "fees_section",
+   "fieldtype": "Section Break",
+   "label": "Fees & Payments"
+  },
+  {
+   "fieldname": "application_fee",
+   "fieldtype": "Currency",
+   "label": "Application Fee",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "inspection_fee",
+   "fieldtype": "Currency",
+   "label": "Inspection Fee",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "column_break_fees_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "security_deposit",
+   "fieldtype": "Currency",
+   "label": "Security Deposit",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "other_charges",
+   "fieldtype": "Currency",
+   "label": "Other Charges",
+   "options": "Company:company:default_currency"
+  },
+  {
+   "fieldname": "column_break_fees_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_fees_paid",
+   "fieldtype": "Currency",
+   "label": "Total Fees Paid",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "remarks_tab",
+   "fieldtype": "Tab Break",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_mjae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "column_break_more_1",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:40.225016",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "KSEB Paper Works",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "application_number,customer,status_of_kseb_paper_work",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

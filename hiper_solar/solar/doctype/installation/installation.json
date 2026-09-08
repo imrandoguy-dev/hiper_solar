@@ -1,0 +1,400 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "INST-.YYYY.-.#####",
+ "creation": "2026-08-27 15:08:53.282450",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "installation_information_section",
+  "installation_id",
+  "company",
+  "installation_type",
+  "installation_address",
+  "column_break_inst_1",
+  "project",
+  "total_project_cost",
+  "assigned_to",
+  "sales_order",
+  "column_break_inst_2",
+  "customer",
+  "contact_person",
+  "phone",
+  "linked_documents_section",
+  "product_delivery",
+  "column_break_linked_1",
+  "site_visit",
+  "installation_status_section",
+  "installation_status",
+  "actual_start_date",
+  "column_break_status_1",
+  "scheduled_date",
+  "completed_date",
+  "column_break_status_2",
+  "planned_completion_date",
+  "actual_completion_time",
+  "problem_section",
+  "any_problem_faced",
+  "installation_summary_section",
+  "team_lead",
+  "customer_feedback",
+  "column_break_summary_1",
+  "team_members",
+  "column_break_summary_2",
+  "total_working_hours",
+  "customer_satisfaction",
+  "checklist_tab",
+  "checklist",
+  "issues_tab",
+  "issues",
+  "documents_tab",
+  "installation_report",
+  "warranty_card",
+  "column_break_doc_1",
+  "customer_signoff",
+  "installation_photo",
+  "more_info_tab",
+  "column_break_wjue",
+  "internal_notes",
+  "column_break_more_1"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "installation_information_section",
+   "fieldtype": "Section Break",
+   "label": "Installation Information"
+  },
+  {
+   "fieldname": "installation_id",
+   "fieldtype": "Data",
+   "label": "Installation ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "installation_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Installation Type",
+   "options": "Solar Panel Installation\nInverter Installation\nBattery Installation\nStructure Mounting\nWiring & Earthing\nMaintenance\nOther"
+  },
+  {
+   "fieldname": "installation_address",
+   "fieldtype": "Small Text",
+   "label": "Installation Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_inst_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Project ",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_project_cost",
+   "fieldtype": "Currency",
+   "label": "Total Project Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned To",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_inst_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "linked_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Linked Documents"
+  },
+  {
+   "fieldname": "product_delivery",
+   "fieldtype": "Link",
+   "label": "Product Delivery",
+   "options": "Product Delivery"
+  },
+  {
+   "fieldname": "column_break_linked_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "site_visit",
+   "fieldtype": "Link",
+   "label": "Site Visit",
+   "options": "Site Visit"
+  },
+  {
+   "fieldname": "installation_status_section",
+   "fieldtype": "Section Break",
+   "label": "Installation Status"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "installation_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "status",
+   "options": "Pending\nIn Progress\nCompleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_start_date",
+   "fieldtype": "Date",
+   "label": "Actual Start Date"
+  },
+  {
+   "fieldname": "column_break_status_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "scheduled_date",
+   "fieldtype": "Date",
+   "label": "Scheduled Date"
+  },
+  {
+   "fieldname": "completed_date",
+   "fieldtype": "Date",
+   "label": "Completed Date"
+  },
+  {
+   "fieldname": "column_break_status_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "planned_completion_date",
+   "fieldtype": "Date",
+   "label": "Planned Completion Date"
+  },
+  {
+   "fieldname": "actual_completion_time",
+   "fieldtype": "Time",
+   "label": "Actual Completion Time"
+  },
+  {
+   "fieldname": "problem_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "any_problem_faced",
+   "fieldtype": "Small Text",
+   "label": "Any Problem Faced"
+  },
+  {
+   "fieldname": "installation_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Installation Summary"
+  },
+  {
+   "fieldname": "team_lead",
+   "fieldtype": "Data",
+   "label": "Team Lead"
+  },
+  {
+   "fieldname": "customer_feedback",
+   "fieldtype": "Small Text",
+   "label": "Customer Feedback"
+  },
+  {
+   "fieldname": "column_break_summary_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "team_members",
+   "fieldtype": "Small Text",
+   "label": "Team Members"
+  },
+  {
+   "fieldname": "column_break_summary_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "label": "Total Working Hours"
+  },
+  {
+   "fieldname": "customer_satisfaction",
+   "fieldtype": "Select",
+   "label": "Customer Satisfaction",
+   "options": "\nExcellent\nGood\nAverage\nPoor"
+  },
+  {
+   "fieldname": "checklist_tab",
+   "fieldtype": "Tab Break",
+   "label": "Checklist"
+  },
+  {
+   "fieldname": "checklist",
+   "fieldtype": "Table",
+   "label": "Checklist",
+   "options": "Installation Checklist Item"
+  },
+  {
+   "fieldname": "issues_tab",
+   "fieldtype": "Tab Break",
+   "label": "Issues"
+  },
+  {
+   "fieldname": "issues",
+   "fieldtype": "Table",
+   "label": "Issues",
+   "options": "Installation Issue"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "installation_report",
+   "fieldtype": "Attach",
+   "label": "Installation Report"
+  },
+  {
+   "fieldname": "warranty_card",
+   "fieldtype": "Attach",
+   "label": "Warranty Card"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_signoff",
+   "fieldtype": "Attach",
+   "label": "Customer Sign-off"
+  },
+  {
+   "fieldname": "installation_photo",
+   "fieldtype": "Attach Image",
+   "label": "Installation Photo"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_wjue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "column_break_more_1",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:38.996424",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Installation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,installation_status,scheduled_date",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

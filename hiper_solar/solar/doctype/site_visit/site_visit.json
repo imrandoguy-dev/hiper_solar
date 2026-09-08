@@ -1,0 +1,418 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "SV-.YYYY.-.#####",
+ "creation": "2026-08-27 15:08:07.331966",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "visit_information_section",
+  "site_visit_id",
+  "employee",
+  "customer",
+  "location_site_address",
+  "column_break_visit_1",
+  "visit_date",
+  "company",
+  "contact_person",
+  "purpose_of_visit",
+  "column_break_visit_2",
+  "visit_time",
+  "phone",
+  "related_loan",
+  "quotation",
+  "site_environment_details_section",
+  "property_type",
+  "available_roof_area_sqft",
+  "nearest_power_source",
+  "column_break_site_1",
+  "roof_type",
+  "sunlight_exposure",
+  "accessibility",
+  "column_break_site_2",
+  "roof_condition",
+  "shade_obstruction",
+  "safety_condition",
+  "visit_summary_section",
+  "overall_atmosphere",
+  "column_break_summary_1",
+  "remarks",
+  "column_break_summary_2",
+  "customer_interest_level",
+  "purchase_timeline_expected",
+  "observations_tab",
+  "site_observations",
+  "issues_noted",
+  "recommendations",
+  "photos_tab",
+  "photos",
+  "follow_up_tab",
+  "follow_up_required",
+  "next_follow_up_date",
+  "follow_up_mode",
+  "column_break_follow_1",
+  "follow_up_owner",
+  "follow_up_notes",
+  "more_info_tab",
+  "column_break_aljm",
+  "status",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "visit_information_section",
+   "fieldtype": "Section Break",
+   "label": "Visit Information"
+  },
+  {
+   "fieldname": "site_visit_id",
+   "fieldtype": "Data",
+   "label": "Site Visit ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location_site_address",
+   "fieldtype": "Small Text",
+   "label": "Location / Site Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_visit_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "visit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Visit Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "purpose_of_visit",
+   "fieldtype": "Select",
+   "label": "Purpose of Visit",
+   "options": "Evaluate Installation Requirement\nSite Survey\nTechnical Inspection\nCustomer Meeting\nService / Complaint\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_visit_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visit_time",
+   "fieldtype": "Time",
+   "label": "Visit Time"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "related_loan",
+   "fieldtype": "Link",
+   "label": "Related Loan (if any)",
+   "options": "Solar Loan"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "site_environment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Site & Environment Details"
+  },
+  {
+   "fieldname": "property_type",
+   "fieldtype": "Select",
+   "label": "Property Type",
+   "options": "Residential\nCommercial\nIndustrial\nInstitutional\nAgricultural"
+  },
+  {
+   "fieldname": "available_roof_area_sqft",
+   "fieldtype": "Float",
+   "label": "Available Roof Area (sq.ft.)"
+  },
+  {
+   "fieldname": "nearest_power_source",
+   "fieldtype": "Select",
+   "label": "Nearest Power Source",
+   "options": "Within 50 Meter\n50 - 100 Meter\nAbove 100 Meter"
+  },
+  {
+   "fieldname": "column_break_site_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "roof_type",
+   "fieldtype": "Select",
+   "label": "Roof Type",
+   "options": "Concrete\nTiled\nTin Sheet\nAsbestos\nOther"
+  },
+  {
+   "fieldname": "sunlight_exposure",
+   "fieldtype": "Select",
+   "label": "Sunlight Exposure",
+   "options": "Excellent\nGood\nAverage\nPoor"
+  },
+  {
+   "fieldname": "accessibility",
+   "fieldtype": "Select",
+   "label": "Accessibility",
+   "options": "Good\nModerate\nDifficult"
+  },
+  {
+   "fieldname": "column_break_site_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "roof_condition",
+   "fieldtype": "Select",
+   "label": "Roof Condition",
+   "options": "Good\nAverage\nPoor"
+  },
+  {
+   "fieldname": "shade_obstruction",
+   "fieldtype": "Select",
+   "label": "Shade / Obstruction",
+   "options": "No Shade\nPartial Shade\nFull Shade"
+  },
+  {
+   "fieldname": "safety_condition",
+   "fieldtype": "Select",
+   "label": "Safety Condition",
+   "options": "Safe\nModerate\nUnsafe"
+  },
+  {
+   "fieldname": "visit_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Visit Summary"
+  },
+  {
+   "fieldname": "overall_atmosphere",
+   "fieldtype": "Select",
+   "label": "Overall Atmosphere",
+   "options": "Excellent\nGood\nAverage\nPoor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_summary_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_summary_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_interest_level",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Customer Interest Level",
+   "options": "High\nMedium\nLow",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_timeline_expected",
+   "fieldtype": "Select",
+   "label": "Purchase Timeline (Expected)",
+   "options": "Within 1 Month\n1 - 3 Months\n3 - 6 Months\nAbove 6 Months"
+  },
+  {
+   "fieldname": "observations_tab",
+   "fieldtype": "Tab Break",
+   "label": "Observations"
+  },
+  {
+   "fieldname": "site_observations",
+   "fieldtype": "Text Editor",
+   "label": "Site Observations"
+  },
+  {
+   "fieldname": "issues_noted",
+   "fieldtype": "Small Text",
+   "label": "Issues Noted"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Small Text",
+   "label": "Recommendations"
+  },
+  {
+   "fieldname": "photos_tab",
+   "fieldtype": "Tab Break",
+   "label": "Photos"
+  },
+  {
+   "fieldname": "photos",
+   "fieldtype": "Table",
+   "label": "Photos",
+   "options": "Site Visit Photo"
+  },
+  {
+   "fieldname": "follow_up_tab",
+   "fieldtype": "Tab Break",
+   "label": "Follow Up"
+  },
+  {
+   "default": "0",
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "Follow Up Required"
+  },
+  {
+   "depends_on": "follow_up_required",
+   "fieldname": "next_follow_up_date",
+   "fieldtype": "Date",
+   "label": "Next Follow Up Date"
+  },
+  {
+   "depends_on": "follow_up_required",
+   "fieldname": "follow_up_mode",
+   "fieldtype": "Select",
+   "label": "Follow Up Mode",
+   "options": "Phone Call\nWhatsApp\nEmail\nSite Visit"
+  },
+  {
+   "fieldname": "column_break_follow_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "follow_up_required",
+   "fieldname": "follow_up_owner",
+   "fieldtype": "Link",
+   "label": "Follow Up Owner",
+   "options": "User"
+  },
+  {
+   "depends_on": "follow_up_required",
+   "fieldname": "follow_up_notes",
+   "fieldtype": "Small Text",
+   "label": "Follow Up Notes"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_aljm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not visited",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "\nNot visited\nVisited"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:38.332026",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Site Visit",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,employee,visit_date",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

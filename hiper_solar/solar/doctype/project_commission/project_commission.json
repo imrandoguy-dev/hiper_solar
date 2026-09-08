@@ -1,0 +1,311 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "PC-.YYYY.-.####",
+ "creation": "2026-08-27 15:10:27.312571",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_section",
+  "commissioning_id",
+  "company",
+  "site_address",
+  "column_break_basic_1",
+  "project",
+  "installation_completion_date",
+  "column_break_basic_2",
+  "customer",
+  "commissioning_date",
+  "kseb_details_section",
+  "kseb_office",
+  "transformer_number",
+  "column_break_kseb_1",
+  "section_office",
+  "kseb_inspection_status",
+  "column_break_kseb_2",
+  "application_number",
+  "kseb_paper_works",
+  "status_completion_section",
+  "status_of_project_commission",
+  "column_break_status_1",
+  "completion_date",
+  "column_break_status_2",
+  "remarks",
+  "documents_tab",
+  "documents_section",
+  "commissioning_certificate",
+  "meter_installation_proof",
+  "column_break_doc_1",
+  "final_handover_document",
+  "commissioning_photo",
+  "more_info",
+  "more_info_section",
+  "column_break_hwcq",
+  "column_break_more_1",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Will be set automatically",
+   "fieldname": "commissioning_id",
+   "fieldtype": "Data",
+   "label": "Commissioning ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "site_address",
+   "fieldtype": "Small Text",
+   "label": "Site Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Installation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "installation_completion_date",
+   "fieldtype": "Date",
+   "label": "Installation Completion Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "project.customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "commissioning_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Commissioning Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "kseb_details_section",
+   "fieldtype": "Section Break",
+   "label": "KSEB Details"
+  },
+  {
+   "fieldname": "kseb_office",
+   "fieldtype": "Link",
+   "label": "KSEB Office",
+   "options": "KSEB Office",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transformer_number",
+   "fieldtype": "Data",
+   "label": "Transformer Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kseb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_office",
+   "fieldtype": "Link",
+   "label": "Section Office",
+   "options": "KSEB Office",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "kseb_inspection_status",
+   "fieldtype": "Select",
+   "label": "KSEB Inspection Status",
+   "options": "Pending\nScheduled\nInspected\nApproved\nRejected",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kseb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "application_number",
+   "fieldtype": "Data",
+   "label": "Application Number"
+  },
+  {
+   "fieldname": "kseb_paper_works",
+   "fieldtype": "Link",
+   "label": "KSEB Paper Works",
+   "options": "KSEB Paper Works"
+  },
+  {
+   "fieldname": "status_completion_section",
+   "fieldtype": "Section Break",
+   "label": "Status & Completion"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status_of_project_commission",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status of Project Commission",
+   "options": "Pending\nIn Progress\nCommissioned",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "completion_date",
+   "fieldtype": "Date",
+   "label": "Completion Date"
+  },
+  {
+   "fieldname": "column_break_status_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "commissioning_certificate",
+   "fieldtype": "Attach",
+   "label": "Commissioning Certificate"
+  },
+  {
+   "fieldname": "meter_installation_proof",
+   "fieldtype": "Attach",
+   "label": "Meter Installation Proof"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "final_handover_document",
+   "fieldtype": "Attach",
+   "label": "Final Handover Document"
+  },
+  {
+   "fieldname": "commissioning_photo",
+   "fieldtype": "Attach Image",
+   "label": "Commissioning Photo"
+  },
+  {
+   "fieldname": "more_info",
+   "fieldtype": "Tab Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_info_section",
+   "fieldtype": "Section Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "column_break_hwcq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_more_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:40.581808",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Project Commission",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,project,status_of_project_commission",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

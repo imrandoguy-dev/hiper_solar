@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:office_name",
+ "creation": "2026-08-27 15:09:43.743989",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "office_name",
+  "office_type",
+  "district",
+  "column_break_1",
+  "contact_number",
+  "address"
+ ],
+ "fields": [
+  {
+   "fieldname": "office_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Office Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "office_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Office Type",
+   "options": "Electrical Section\nSub Division\nDivision\nCircle"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "District",
+   "options": "Thiruvananthapuram\nKollam\nPathanamthitta\nAlappuzha\nKottayam\nIdukki\nErnakulam\nThrissur\nPalakkad\nMalappuram\nKozhikode\nWayanad\nKannur\nKasaragod"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:39.937911",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "KSEB Office",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

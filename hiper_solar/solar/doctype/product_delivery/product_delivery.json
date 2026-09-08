@@ -1,0 +1,391 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "PD-.YYYY.-.#####",
+ "creation": "2026-08-27 15:08:30.571939",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "delivery_information_section",
+  "product_delivery_id",
+  "company",
+  "customer",
+  "project",
+  "sales_order",
+  "column_break_del_1",
+  "delivery_date",
+  "delivery_time",
+  "vehicle_no",
+  "driver_name",
+  "column_break_del_2",
+  "phone",
+  "contact_person",
+  "delivery_through",
+  "site_visit",
+  "stock_transfer_section",
+  "stock_entry_type",
+  "column_break_stock_1",
+  "source_warehouse",
+  "stock_entry",
+  "column_break_stock_2",
+  "target_warehouse",
+  "transfer_status",
+  "items_tab",
+  "items",
+  "totals_section",
+  "total_qty",
+  "column_break_tot_1",
+  "total_amount",
+  "remarks_section",
+  "remarks",
+  "address_contact_tab",
+  "delivery_address",
+  "column_break_addr_1",
+  "customer_address",
+  "contact_email",
+  "documents_tab",
+  "delivery_challan",
+  "acknowledgement",
+  "column_break_doc_1",
+  "gate_pass",
+  "site_photo",
+  "more_info_tab",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "delivery_information_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Information"
+  },
+  {
+   "fieldname": "product_delivery_id",
+   "fieldtype": "Data",
+   "label": "Product Delivery ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order Item"
+  },
+  {
+   "fieldname": "column_break_del_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Delivery Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "delivery_time",
+   "fieldtype": "Time",
+   "label": "Delivery Time"
+  },
+  {
+   "fieldname": "vehicle_no",
+   "fieldtype": "Data",
+   "label": "Vehicle No."
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "column_break_del_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "fieldname": "delivery_through",
+   "fieldtype": "Select",
+   "label": "Delivery Through",
+   "options": "Company Vehicle\nCourier\nThird Party Transport\nCustomer Pickup"
+  },
+  {
+   "fieldname": "site_visit",
+   "fieldtype": "Link",
+   "label": "Related Site Visit",
+   "options": "Site Visit"
+  },
+  {
+   "fieldname": "stock_transfer_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Transfer"
+  },
+  {
+   "default": "Material Transfer",
+   "description": "Material Transfer moves stock between warehouses. Material Issue writes it off out of stock.",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Material Transfer\nMaterial Issue",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_stock_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stock_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.stock_entry_type=='Material Transfer'",
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "label": "Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "transfer_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transfer Status",
+   "options": "Pending\nTransferred\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Product Delivery Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Transfer Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tot_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "address_contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Address & Contact"
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Small Text",
+   "label": "Delivery Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_addr_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Customer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "delivery_challan",
+   "fieldtype": "Attach",
+   "label": "Delivery Challan"
+  },
+  {
+   "fieldname": "acknowledgement",
+   "fieldtype": "Attach",
+   "label": "Customer Acknowledgement"
+  },
+  {
+   "fieldname": "column_break_doc_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gate_pass",
+   "fieldtype": "Attach",
+   "label": "Gate Pass"
+  },
+  {
+   "fieldname": "site_photo",
+   "fieldtype": "Attach Image",
+   "label": "Site Photo"
+  },
+  {
+   "fieldname": "more_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:38.614619",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Product Delivery",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "customer,delivery_date,transfer_status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer",
+ "track_changes": 1
+}

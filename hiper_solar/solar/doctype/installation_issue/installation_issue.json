@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-08-27 15:07:04.077998",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "issue",
+  "severity",
+  "reported_on",
+  "resolved",
+  "resolution",
+  "reported_by"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "issue",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Issue",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "default": "Medium",
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Severity",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "columns": 2,
+   "fieldname": "reported_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Reported On"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "resolved",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Resolved"
+  },
+  {
+   "columns": 3,
+   "fieldname": "resolution",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "reported_by",
+   "fieldtype": "Link",
+   "label": "Reported By",
+   "options": "Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-08 12:26:42.037003",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Installation Issue",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
