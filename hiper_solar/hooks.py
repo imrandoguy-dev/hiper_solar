@@ -7,6 +7,10 @@ app_license = "mit"
 
 required_apps = ["erpnext"]
 
+# Without this the desk app-switcher builds an <img> with an undefined src
+# and fires a 404 for /undefined on every page load.
+app_logo_url = "/assets/hiper_solar/images/hiper_solar.svg"
+
 # Installation
 # ------------
 after_install = "hiper_solar.install.after_install"
@@ -187,6 +191,10 @@ fixtures = [
 	{
 		"dt": "Workspace",
 		"filters": [["name", "in", SOLAR_WORKSPACES]],
+	},
+	{
+		"dt": "Workspace Sidebar",
+		"filters": [["name", "in", ["Solar", "Solar Support"]]],
 	},
 	{
 		"dt": "Print Format",
