@@ -33,6 +33,7 @@ DOCTYPES = [
 	"Paper Work Document",
 	"Subsidy Disbursement",
 	"Commissioning Check",
+	"Solar Document",
 ]
 
 
