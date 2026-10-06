@@ -329,11 +329,15 @@
  {
   "app": null,
   "charts": [],
-  "content": "[{\"id\":\"sdblk01\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Solar Dashboard\",\"col\":12}}]",
+  "content": "[{\"id\":\"sdblk01\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Solar Dashboard\",\"col\":12}},{\"id\":\"sdblk02\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Customer Progress\",\"col\":12}}]",
   "custom_blocks": [
    {
     "custom_block_name": "Solar Dashboard",
     "label": "Solar Dashboard"
+   },
+   {
+    "custom_block_name": "Customer Progress",
+    "label": "Customer Progress"
    }
   ],
   "custom_header_icon": null,
@@ -349,7 +353,7 @@
   "link_to": null,
   "link_type": "DocType",
   "links": [],
-  "modified": "2026-08-28 15:40:54.815753",
+  "modified": "2026-10-06 09:26:12.025241",
   "module": null,
   "name": "Solar Dashboard",
   "number_cards": [],
