@@ -189,6 +189,7 @@ SOLAR_CUSTOM_FIELDS = [
 	"Quotation-custom_solar_package",
 	"Quotation Item-custom_solar_type",
 	"Quotation Item-custom_item_capacity",
+	"Quotation-custom_site_visit",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -251,6 +252,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Project Commission - Fill from Lead",
 	"Product Delivery - Fill from Lead",
 	"Solar Package Template - Totals",
+	"Quotation - Link Site Visit",
 ]
 
 SOLAR_WORKSPACES = [
