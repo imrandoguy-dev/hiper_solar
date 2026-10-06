@@ -14,6 +14,7 @@ app_logo_url = "/assets/hiper_solar/images/hiper_solar.svg"
 # Installation
 # ------------
 after_install = "hiper_solar.install.after_install"
+after_migrate = "hiper_solar.install.after_migrate"
 
 # Doctypes the app owns end to end.
 SOLAR_DOCTYPES = [

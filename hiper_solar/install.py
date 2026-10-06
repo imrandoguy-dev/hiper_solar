@@ -7,6 +7,11 @@ MODULES = ["Solar", "Solar Support"]
 def after_install():
 	enable_server_scripts()
 	create_module_defs()
+	ensure_crm_desktop_icon()
+
+
+def after_migrate():
+	ensure_crm_desktop_icon()
 
 
 def enable_server_scripts():
@@ -57,3 +62,50 @@ def create_module_defs():
 		doc.insert(ignore_permissions=True)
 
 	frappe.db.commit()
+
+
+def ensure_crm_desktop_icon():
+	"""Put Frappe CRM on the v16 desktop when it is installed.
+
+	The Solar and Solar Support icons ship as files in hiper_solar/desktop_icon and
+	are synced by Frappe itself. The CRM icon cannot ship that way because CRM is
+	optional, so it is created here. Frappe only builds an app icon from
+	`add_to_apps_screen` at the moment that app is installed, and on our sites it
+	has repeatedly ended up missing, so this checks on every install and migrate.
+	"""
+	if "crm" not in frappe.get_installed_apps():
+		return
+
+	try:
+		if frappe.db.exists("Desktop Icon", {"icon_type": "App", "app": "crm"}):
+			return
+
+		label = "Frappe CRM"
+		values = {
+			"label": label,
+			"icon_type": "App",
+			"link_type": "External",
+			"link": "/crm",
+			"app": "crm",
+			"logo_url": "/assets/crm/images/logo.svg",
+			"bg_color": "gray",
+			"hidden": 0,
+			"idx": 2,
+		}
+
+		# Frappe may already have made a workspace-link icon called "Frappe CRM"
+		# for CRM's own workspace; the label is the docname, so reuse that record.
+		if frappe.db.exists("Desktop Icon", label):
+			icon = frappe.get_doc("Desktop Icon", label)
+			icon.update(values)
+			icon.link_to = None
+			icon.save(ignore_permissions=True)
+		else:
+			icon = frappe.new_doc("Desktop Icon")
+			icon.update(values)
+			icon.insert(ignore_permissions=True)
+
+		frappe.db.commit()
+		frappe.cache.delete_value("desktop_icons")
+	except Exception:
+		frappe.log_error(title="hiper_solar: could not create the Frappe CRM desktop icon")

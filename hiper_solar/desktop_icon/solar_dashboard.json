@@ -1,0 +1,20 @@
+{
+ "app": "hiper_solar",
+ "bg_color": "gray",
+ "creation": "2026-10-06 10:30:00.000000",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 1,
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Solar Dashboard",
+ "link_to": "Solar",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-10-06 10:30:00.000000",
+ "modified_by": "Administrator",
+ "name": "Solar Dashboard",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}
