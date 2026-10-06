@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:package_name",
+ "creation": "2026-09-30 14:55:51.867246",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "package_name",
+  "total_capacity",
+  "column_break_1",
+  "roof_type",
+  "no_of_items",
+  "column_break_2",
+  "is_active",
+  "section_description",
+  "description",
+  "section_items",
+  "package_items",
+  "section_totals",
+  "column_break_3",
+  "column_break_4",
+  "total_amount",
+  "package_discount",
+  "net_package_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Package Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "e.g. 5 kW",
+   "fieldname": "total_capacity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Total Capacity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "roof_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Roof Type",
+   "options": "\nRCC\nSheet\nTile\nGround Mount\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_of_items",
+   "fieldtype": "Int",
+   "label": "No. of Items",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Only active packages can be picked on a Quotation",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "section_description",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_items",
+   "fieldtype": "Section Break",
+   "label": "Package Items"
+  },
+  {
+   "fieldname": "package_items",
+   "fieldtype": "Table",
+   "label": "Package Items",
+   "options": "Solar Package Template Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_totals",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Item Amount",
+   "read_only": 1
+  },
+  {
+   "description": "Applied as Additional Discount on the Quotation",
+   "fieldname": "package_discount",
+   "fieldtype": "Currency",
+   "label": "Package Discount",
+   "non_negative": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "net_package_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Net Package Amount",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-01 10:16:31.465527",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Solar Package Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "total_capacity,roof_type",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "package_name",
+ "track_changes": 1
+}

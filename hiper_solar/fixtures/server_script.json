@@ -378,5 +378,24 @@
   "reference_doctype": "Product Delivery",
   "script": "# Product Delivery: fill blank contact details and delivery address from the Customer's Lead.\nlead = frappe.db.get_value(\"Customer\", doc.customer, \"lead_name\") if doc.customer else None\nif lead and frappe.db.exists(\"Lead\", lead):\n    d = frappe.db.get_value(\"Lead\", lead, [\"lead_name\", \"mobile_no\", \"phone\", \"email_id\", \"custom_address\", \"city\", \"state\"], as_dict=True) or {}\n    addr = d.get(\"custom_address\") or \", \".join([x for x in [d.get(\"city\"), d.get(\"state\")] if x])\n    pairs = [\n        [\"contact_person\", d.get(\"lead_name\")],\n        [\"phone\", d.get(\"mobile_no\") or d.get(\"phone\")],\n        [\"contact_email\", d.get(\"email_id\")],\n        [\"delivery_address\", addr],\n    ]\n    for p in pairs:\n        if p[1] and not doc.get(p[0]):\n            doc.set(p[0], p[1])\n",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2026-09-30 14:56:01.294412",
+  "module": null,
+  "name": "Solar Package Template - Totals",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Solar Package Template",
+  "script": "total = 0\nfor row in doc.package_items:\n    qty = frappe.utils.flt(row.qty)\n    rate = frappe.utils.flt(row.rate)\n    disc = frappe.utils.flt(row.discount_amount)\n    if disc > rate:\n        frappe.throw(f\"Row {row.idx}: Discount ({disc}) cannot be more than Rate ({rate})\")\n    row.amount = qty * (rate - disc)\n    total = total + row.amount\n\ndoc.no_of_items = len(doc.package_items)\ndoc.total_amount = total\npackage_discount = frappe.utils.flt(doc.package_discount)\nif package_discount > total:\n    frappe.throw(\"Package Discount cannot be more than Total Item Amount\")\ndoc.net_package_amount = total - package_discount\n",
+  "script_type": "DocType Event"
  }
 ]

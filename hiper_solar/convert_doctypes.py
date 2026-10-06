@@ -34,6 +34,8 @@ DOCTYPES = [
 	"Subsidy Disbursement",
 	"Commissioning Check",
 	"Solar Document",
+	"Solar Package Template",
+	"Solar Package Template Item",
 ]
 
 

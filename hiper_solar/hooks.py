@@ -26,6 +26,7 @@ SOLAR_DOCTYPES = [
 	"KSEB Office",
 	"KSEB Paper Works",
 	"Project Commission",
+	"Solar Package Template",
 ]
 
 # Standard doctypes the app extends.
@@ -177,6 +178,16 @@ SOLAR_CUSTOM_FIELDS = [
 	"Subsidy-custom_other_documents",
 	"KSEB Paper Works-custom_other_documents",
 	"Project Commission-custom_other_documents",
+	"Item-custom_solar_type",
+	"Item-custom_item_capacity",
+	"Quotation-custom_solar_section",
+	"Quotation-custom_total_capacity",
+	"Quotation-custom_col_solar_1",
+	"Quotation-custom_roof_type",
+	"Quotation-custom_col_solar_2",
+	"Quotation-custom_solar_package",
+	"Quotation Item-custom_solar_type",
+	"Quotation Item-custom_item_capacity",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -213,6 +224,8 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Project Commission - Fetch from Lead",
 	"Lead - Create Site Visit",
 	"Lead Work Stage Dashboard",
+	"Solar Package Template - Totals",
+	"Quotation - Load Solar Package",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
@@ -236,6 +249,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"KSEB Paper Works - Fill from Lead",
 	"Project Commission - Fill from Lead",
 	"Product Delivery - Fill from Lead",
+	"Solar Package Template - Totals",
 ]
 
 SOLAR_WORKSPACES = [

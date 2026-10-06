@@ -293,6 +293,22 @@
     "show_arrow": 0,
     "type": "Link",
     "url": null
+   },
+   {
+    "child": 0,
+    "collapsible": 1,
+    "filters": null,
+    "icon": "package",
+    "indent": 0,
+    "keep_closed": 0,
+    "label": "Solar Package",
+    "link_to": "Solar Package Template",
+    "link_type": "DocType",
+    "navigate_to_tab": null,
+    "route_options": null,
+    "show_arrow": 0,
+    "type": "Link",
+    "url": null
    }
   ],
   "modified": "2026-10-05 09:23:37.522442",
