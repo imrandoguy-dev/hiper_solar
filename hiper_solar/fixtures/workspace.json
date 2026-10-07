@@ -32,7 +32,7 @@
   "type": "Workspace"
  },
  {
-  "app": "hiper_solar",
+  "app": null,
   "charts": [],
   "content": "[{\"id\":\"HOEnlt9aR9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">Solar Support Module</span>\",\"col\":12}},{\"id\":\"oxhWhXp9b2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"Ff8Ab3nLLN\",\"type\":\"card\",\"data\":{\"card_name\":\"Issues\",\"col\":4}},{\"id\":\"_lndiuJTVP\",\"type\":\"card\",\"data\":{\"card_name\":\"Maintenance\",\"col\":4}},{\"id\":\"N8aA2afWfi\",\"type\":\"card\",\"data\":{\"card_name\":\"Warranty\",\"col\":4}},{\"id\":\"M5fxGuFwUR\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"xKH0kO9q4P\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
   "custom_blocks": [],
@@ -275,8 +275,8 @@
     "type": "Link"
    }
   ],
-  "modified": "2026-09-08 12:15:21.043799",
-  "module": "Solar Support",
+  "modified": "2026-10-07 09:30:00.000000",
+  "module": null,
   "name": "Solar Support",
   "number_cards": [],
   "parent_page": null,
@@ -290,13 +290,13 @@
   "type": "Workspace"
  },
  {
-  "app": "hiper_solar",
+  "app": null,
   "charts": [],
   "content": "[{\"id\":\"ssdblk01\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Support Dashboard\",\"col\":12}}]",
   "custom_blocks": [
    {
     "custom_block_name": "Support Dashboard",
-    "label": null
+    "label": "Support Dashboard"
    }
   ],
   "custom_header_icon": null,
@@ -312,8 +312,8 @@
   "link_to": null,
   "link_type": "DocType",
   "links": [],
-  "modified": "2026-09-08 12:15:21.273447",
-  "module": "Solar Support",
+  "modified": "2026-10-07 09:30:00.000000",
+  "module": null,
   "name": "Solar Support Dashboard",
   "number_cards": [],
   "parent_page": null,
