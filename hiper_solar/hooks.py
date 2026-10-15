@@ -190,6 +190,17 @@ SOLAR_CUSTOM_FIELDS = [
 	"Quotation Item-custom_solar_type",
 	"Quotation Item-custom_item_capacity",
 	"Quotation-custom_site_visit",
+	"Company-custom_quote_print_section",
+	"Company-custom_quote_header_image",
+	"Company-custom_quote_tagline",
+	"Company-custom_quote_notes",
+	"Company-custom_quote_print_col",
+	"Company-custom_quote_signature",
+	"Company-custom_quote_seal",
+	"Company-custom_quote_signatory",
+	"Company-custom_quote_signatory_phone",
+	"Quotation-custom_quote_notes",
+	"Bank Account-custom_branch",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -303,6 +314,6 @@ fixtures = [
 	},
 	{
 		"dt": "Print Format",
-		"filters": [["name", "in", ["Quotation Swiss"]]],
+		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green"]]],
 	},
 ]
