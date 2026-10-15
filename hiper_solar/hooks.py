@@ -201,6 +201,7 @@ SOLAR_CUSTOM_FIELDS = [
 	"Company-custom_quote_signatory_phone",
 	"Quotation-custom_quote_notes",
 	"Quotation-custom_quote_photos_tab",
+	"Quotation-custom_print_images_panel",
 	"Quotation-custom_print_images",
 	"Print Format-custom_image_slots_section",
 	"Print Format-custom_image_slots",
