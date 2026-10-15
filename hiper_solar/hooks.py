@@ -199,6 +199,7 @@ SOLAR_CUSTOM_FIELDS = [
 	"Company-custom_quote_seal",
 	"Company-custom_quote_signatory",
 	"Company-custom_quote_signatory_phone",
+	"Company-custom_quote_upi_id",
 	"Quotation-custom_quote_notes_template",
 	"Quotation-custom_quote_notes",
 	"Quotation-custom_quote_photos_tab",
@@ -325,6 +326,6 @@ fixtures = [
 	},
 	{
 		"dt": "Print Format",
-		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green"]]],
+		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green", "Solar Quotation Green Compact"]]],
 	},
 ]
