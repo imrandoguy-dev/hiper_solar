@@ -400,10 +400,10 @@
   "doctype": "Client Script",
   "dt": "Quotation",
   "enabled": 1,
-  "modified": "2026-10-15 12:12:27.446320",
+  "modified": "2026-10-15 12:37:31.741035",
   "module": "Solar",
   "name": "Quotation - Notes Template",
-  "script": "// Quotation - Notes Template\n// Picking a Notes Template (a Terms and Conditions record) fills the\n// \"Notes (on print)\" box with its text, one note per line.\nfrappe.ui.form.on(\"Quotation\", {\n\tasync custom_quote_notes_template(frm) {\n\t\tconst t = frm.doc.custom_quote_notes_template;\n\t\tif (!t) return;\n\t\tconst r = await frappe.db.get_value(\"Terms and Conditions\", t, \"terms\");\n\t\tconst html = (r.message && r.message.terms) || \"\";\n\t\tconst text = html\n\t\t\t.replace(/<br\\s*\\/?>/gi, \"\\n\")\n\t\t\t.replace(/<\\/(p|div|li|h\\d)>/gi, \"\\n\")\n\t\t\t.replace(/<[^>]+>/g, \"\");\n\t\tconst el = document.createElement(\"textarea\");\n\t\tel.innerHTML = text;\n\t\tconst lines = el.value.split(\"\\n\").map((l) => l.trim()).filter(Boolean);\n\t\tfrm.set_value(\"custom_quote_notes\", lines.join(\"\\n\"));\n\t},\n});\n",
+  "script": "// Quotation - Notes Template\n// Picking a Notes Template fills the \"Notes (on print)\" box with its notes.\nfrappe.ui.form.on(\"Quotation\", {\n\tasync custom_quote_notes_template(frm) {\n\t\tconst t = frm.doc.custom_quote_notes_template;\n\t\tif (!t) return;\n\t\tconst r = await frappe.db.get_value(\"Quotation Notes Template\", t, \"notes\");\n\t\tfrm.set_value(\"custom_quote_notes\", (r.message && r.message.notes) || \"\");\n\t},\n});\n\nfrappe.ui.form.on(\"Quotation\", \"onload\", (frm) => {\n\tfrm.set_query(\"custom_quote_notes_template\", () => ({ filters: { disabled: 0 } }));\n});\n",
   "view": "Form"
  }
 ]
