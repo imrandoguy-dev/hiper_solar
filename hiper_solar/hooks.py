@@ -200,6 +200,10 @@ SOLAR_CUSTOM_FIELDS = [
 	"Company-custom_quote_signatory",
 	"Company-custom_quote_signatory_phone",
 	"Quotation-custom_quote_notes",
+	"Quotation-custom_quote_photos_tab",
+	"Quotation-custom_print_images",
+	"Print Format-custom_image_slots_section",
+	"Print Format-custom_image_slots",
 	"Bank Account-custom_branch",
 ]
 
@@ -239,6 +243,7 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Lead Work Stage Dashboard",
 	"Solar Package Template - Totals",
 	"Quotation - Load Solar Package",
+	"Quotation - Print Images",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
@@ -264,6 +269,9 @@ SOLAR_SERVER_SCRIPTS = [
 	"Product Delivery - Fill from Lead",
 	"Solar Package Template - Totals",
 	"Quotation - Link Site Visit",
+	"Print Images - Get Slots",
+	"Print Images - Set Defaults",
+	"Quotation - Fill Print Image Defaults",
 ]
 
 SOLAR_WORKSPACES = [
