@@ -199,6 +199,7 @@ SOLAR_CUSTOM_FIELDS = [
 	"Company-custom_quote_seal",
 	"Company-custom_quote_signatory",
 	"Company-custom_quote_signatory_phone",
+	"Quotation-custom_quote_notes_template",
 	"Quotation-custom_quote_notes",
 	"Quotation-custom_quote_photos_tab",
 	"Quotation-custom_print_images_panel",
@@ -245,6 +246,7 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Solar Package Template - Totals",
 	"Quotation - Load Solar Package",
 	"Quotation - Print Images",
+	"Quotation - Notes Template",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
