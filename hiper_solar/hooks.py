@@ -206,6 +206,13 @@ SOLAR_CUSTOM_FIELDS = [
 	"Quotation-custom_print_images_panel",
 	"Quotation-custom_print_images",
 	"Quotation-custom_print_extra_pages",
+	"Item-custom_warranty",
+	"Quotation Item-custom_print_section",
+	"Quotation Item-custom_print_qty",
+	"Quotation Item-custom_print_make",
+	"Quotation Item-custom_warranty",
+	"Quotation-custom_price_particulars",
+	"Quotation-custom_subsidy_amount",
 	"Print Format-custom_image_slots_section",
 	"Print Format-custom_image_slots",
 	"Print Format-custom_extra_pages",
@@ -329,6 +336,6 @@ fixtures = [
 	},
 	{
 		"dt": "Print Format",
-		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green", "Solar Quotation Green Compact"]]],
+		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green", "Solar Quotation Green Compact", "Right Img"]]],
 	},
 ]
