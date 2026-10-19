@@ -16,6 +16,9 @@ app_logo_url = "/assets/hiper_solar/images/hiper_solar.svg"
 after_install = "hiper_solar.install.after_install"
 after_migrate = "hiper_solar.install.after_migrate"
 
+# Floating "Modules" switcher (Alt+M) on every desk page
+app_include_js = ["/assets/hiper_solar/js/module_navigator.js"]
+
 # Doctypes the app owns end to end.
 SOLAR_DOCTYPES = [
 	"Solar Loan",
