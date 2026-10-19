@@ -427,13 +427,13 @@
   "doctype_event": "Before Insert",
   "enable_rate_limit": 0,
   "event_frequency": "All",
-  "modified": "2026-10-15 11:40:56.457220",
+  "modified": "2026-10-19 10:43:18.349894",
   "module": "Solar",
   "name": "Print Images - Get Slots",
   "rate_limit_count": 5,
   "rate_limit_seconds": 86400,
   "reference_doctype": null,
-  "script": "# Print formats of a doctype that use images, with their slots.\n# Args: doctype\ndt = frappe.form_dict.get(\"doctype\") or \"Quotation\"\nout = []\nfor pf in frappe.get_all(\"Print Format\", filters={\"doc_type\": dt, \"disabled\": 0}, pluck=\"name\", order_by=\"name asc\"):\n    rows = frappe.get_all(\"Print Image Slot\",\n        filters={\"parent\": pf, \"parenttype\": \"Print Format\"},\n        fields=[\"name\", \"label\", \"default_image\", \"quotation_field\", \"hint\"],\n        order_by=\"idx asc\")\n    if rows:\n        out.append({\"print_format\": pf, \"slots\": rows})\nfrappe.response[\"message\"] = out\n",
+  "script": "# Print formats of a doctype that use images, with their slots and default extra pages.\n# Args: doctype\ndt = frappe.form_dict.get(\"doctype\") or \"Quotation\"\nwith_pages = frappe.get_all(\"Print Format\",\n    filters={\"doc_type\": dt, \"disabled\": 0, \"html\": [\"like\", \"%custom_print_extra_pages%\"]}, pluck=\"name\")\nout = []\nfor pf in frappe.get_all(\"Print Format\", filters={\"doc_type\": dt, \"disabled\": 0}, pluck=\"name\", order_by=\"name asc\"):\n    rows = frappe.get_all(\"Print Image Slot\",\n        filters={\"parent\": pf, \"parenttype\": \"Print Format\"},\n        fields=[\"name\", \"label\", \"default_image\", \"quotation_field\", \"hint\"],\n        order_by=\"idx asc\")\n    pages = []\n    if pf in with_pages:\n        pages = frappe.get_all(\"Print Extra Page\",\n            filters={\"parent\": pf, \"parenttype\": \"Print Format\", \"parentfield\": \"custom_extra_pages\"},\n            fields=[\"page_no\", \"label\", \"image\"], order_by=\"page_no asc\")\n    if rows or pf in with_pages:\n        out.append({\"print_format\": pf, \"slots\": rows, \"extra_pages\": pf in with_pages, \"default_pages\": pages})\nfrappe.response[\"message\"] = out\n",
   "script_type": "API"
  },
  {
@@ -473,5 +473,24 @@
   "reference_doctype": "Quotation",
   "script": "# Print format slots that store their image in a quotation field (e.g. TBH photos):\n# fill those fields on a new quotation from the slot's default image, if empty.\nmeta = frappe.get_meta(\"Quotation\")\nfor row in frappe.get_all(\"Print Image Slot\",\n        filters={\"parenttype\": \"Print Format\", \"quotation_field\": [\"is\", \"set\"], \"default_image\": [\"is\", \"set\"]},\n        fields=[\"parent\", \"quotation_field\", \"default_image\"]):\n    if frappe.db.get_value(\"Print Format\", row.parent, \"doc_type\") != \"Quotation\":\n        continue\n    if meta.has_field(row.quotation_field) and not doc.get(row.quotation_field):\n        doc.set(row.quotation_field, row.default_image)\n",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "print_images_set_default_pages",
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2026-10-19 10:43:24.554142",
+  "module": "Solar",
+  "name": "Print Images - Set Default Pages",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": null,
+  "script": "# Replace a print format's default extra pages.\n# Args: print_format, pages (JSON list of {page_no, label, image})\n# Allowed for System Manager and Sales Manager only.\nroles = frappe.get_roles()\nif \"System Manager\" not in roles and \"Sales Manager\" not in roles:\n    frappe.throw(\"Only a System Manager or Sales Manager can change the default extra pages.\")\n\npf = frappe.form_dict.get(\"print_format\")\npages = frappe.parse_json(frappe.form_dict.get(\"pages\") or \"[]\") or []\nif not pf or not frappe.db.exists(\"Print Format\", pf):\n    frappe.throw(\"Print Format not found\")\n\ndoc = frappe.get_doc(\"Print Format\", pf)\ndoc.set(\"custom_extra_pages\", [])\nfor p in pages:\n    url = p.get(\"image\")\n    if not url or not p.get(\"page_no\"):\n        continue\n    # Keep the file even if the quotation it was first attached to is deleted:\n    # attach a second File record (same file on disk, no copy) to the Print Format.\n    if url.startswith(\"/files/\") or url.startswith(\"/private/files/\"):\n        keeper = {\"file_url\": url, \"attached_to_doctype\": \"Print Format\", \"attached_to_name\": pf}\n        if not frappe.db.exists(\"File\", keeper):\n            src = frappe.db.get_value(\"File\", {\"file_url\": url, \"content_hash\": [\"is\", \"set\"]},\n                [\"file_name\", \"is_private\", \"content_hash\", \"file_size\"], as_dict=True)\n            if src:\n                k = frappe.get_doc({\n                    \"doctype\": \"File\", \"file_url\": url, \"file_name\": src.file_name,\n                    \"is_private\": src.is_private, \"file_size\": src.file_size, \"content_hash\": src.content_hash,\n                    \"attached_to_doctype\": \"Print Format\", \"attached_to_name\": pf,\n                })\n                k.flags.copy_from_existing_file = True\n                k.insert(ignore_permissions=True)\n    doc.append(\"custom_extra_pages\", {\"page_no\": int(p.get(\"page_no\")), \"label\": p.get(\"label\") or \"\", \"image\": url})\ndoc.save(ignore_permissions=True)\nfrappe.response[\"message\"] = len(doc.custom_extra_pages)\n",
+  "script_type": "API"
  }
 ]

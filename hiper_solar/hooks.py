@@ -205,8 +205,10 @@ SOLAR_CUSTOM_FIELDS = [
 	"Quotation-custom_quote_photos_tab",
 	"Quotation-custom_print_images_panel",
 	"Quotation-custom_print_images",
+	"Quotation-custom_print_extra_pages",
 	"Print Format-custom_image_slots_section",
 	"Print Format-custom_image_slots",
+	"Print Format-custom_extra_pages",
 	"Bank Account-custom_branch",
 ]
 
@@ -275,6 +277,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Quotation - Link Site Visit",
 	"Print Images - Get Slots",
 	"Print Images - Set Defaults",
+	"Print Images - Set Default Pages",
 	"Quotation - Fill Print Image Defaults",
 ]
 
