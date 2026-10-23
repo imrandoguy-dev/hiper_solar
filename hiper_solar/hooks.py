@@ -14,6 +14,9 @@ app_logo_url = "/assets/hiper_solar/images/hiper_solar.svg"
 # Installation
 # ------------
 after_install = "hiper_solar.install.after_install"
+# before_migrate saves each site's own sidebars before the app's fixtures overwrite them;
+# after_migrate puts them back (plus every other Solar Settings change) — see install.py
+before_migrate = "hiper_solar.install.before_migrate"
 after_migrate = "hiper_solar.install.after_migrate"
 
 # Floating "Modules" switcher (Alt+M) on every desk page
@@ -230,6 +233,21 @@ SOLAR_CUSTOM_FIELDS = [
 	"Solar Settings-custom_main_section_color",
 	"Solar Settings-custom_package_sections",
 	"Solar Package Template-custom_package_summary",
+	# Solar Settings > Solar Support sidebar, Forms, Work Stages, Names
+	"Solar Settings-custom_support_sidebar_section",
+	"Solar Settings-custom_support_sidebar_items",
+	"Solar Settings-custom_forms_tab",
+	"Solar Settings-custom_forms_ui",
+	"Solar Settings-custom_print_defaults",
+	"Solar Settings-custom_field_rules",
+	"Solar Settings-custom_stages_tab",
+	"Solar Settings-custom_stages_ui",
+	"Solar Settings-custom_work_stages",
+	"Solar Settings-custom_names_tab",
+	"Solar Settings-custom_names_ui",
+	"Solar Settings-custom_words",
+	"Solar Settings-custom_applied_state",
+	"Solar Settings-custom_known_app_links",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -273,6 +291,7 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Solar Settings - Form",
 	"Solar Settings - Package Sections",
 	"Solar Package Template - Sections",
+	"Solar Settings - Forms, Stages and Names",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
@@ -307,6 +326,8 @@ SOLAR_SERVER_SCRIPTS = [
 	"Solar Settings - Create Menu API",
 	"Solar Settings - Package Sections",
 	"Solar Package - Sections API",
+	"Solar Settings - Forms, Stages and Names",
+	"Solar - Work Stages API",
 ]
 
 SOLAR_WORKSPACES = [

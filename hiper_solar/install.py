@@ -14,9 +14,14 @@ def after_install():
 	seed_solar_settings()
 
 
+def before_migrate():
+	backup_sidebars()
+
+
 def after_migrate():
 	ensure_crm_desktop_icon()
 	seed_solar_settings()
+	reapply_solar_settings()
 
 
 def enable_server_scripts():
@@ -191,3 +196,162 @@ def seed_solar_settings():
 	except Exception:
 		frappe.db.rollback()
 		frappe.log_error(title="hiper_solar: could not seed Solar Settings")
+
+
+# ---------------------------------------------------------------------------
+# Keeping each site's own Solar Settings through app updates
+# ---------------------------------------------------------------------------
+# The app ships the Solar / Solar Support sidebars, property setters (e.g. the default
+# Quotation print format) and scripts as fixtures, and every migrate writes those over the
+# site's copies. A site's own choices live in Solar Settings instead, so after the fixtures
+# are synced the settings are saved once more, which applies them again:
+#   - before_migrate keeps a copy of both sidebars exactly as the site has them, so a site
+#     that never saved its sidebar in Solar Settings still gets its own order back;
+#   - new links the app adds to a sidebar are merged into the site's own order, after the
+#     same item they follow in the app; a link the site hid or removed is not brought back;
+#   - a saved link whose target no longer exists is skipped and listed, never an error.
+
+SIDEBAR_FIELDS = (("sidebar_items", "Solar"), ("custom_support_sidebar_items", "Solar Support"))
+SIDEBAR_ROW_KEYS = ("type", "label", "link_type", "link_to", "url", "icon", "child")
+
+
+def _sidebar_backup_path():
+	return frappe.get_site_path("private", "hiper_solar_sidebar_backup.json")
+
+
+def _sidebar_names():
+	"""The sidebar each Solar Settings table writes to."""
+	names = {}
+	for field, default in SIDEBAR_FIELDS:
+		names[field] = default
+	try:
+		if frappe.db.exists("DocType", "Solar Settings"):
+			names["sidebar_items"] = frappe.db.get_single_value("Solar Settings", "target_sidebar") or "Solar"
+	except Exception:
+		pass
+	return names
+
+
+def backup_sidebars():
+	"""Copy the Solar sidebars as this site has them, before the app's fixtures replace them."""
+	try:
+		out = {}
+		for sb_name in set(_sidebar_names().values()):
+			if not frappe.db.exists("Workspace Sidebar", sb_name):
+				continue
+			items = frappe.get_all(
+				"Workspace Sidebar Item",
+				filters={"parent": sb_name, "parenttype": "Workspace Sidebar"},
+				fields=list(SIDEBAR_ROW_KEYS),
+				order_by="idx asc",
+			)
+			out[sb_name] = [dict(i) for i in items]
+		if out:
+			path = _sidebar_backup_path()
+			os.makedirs(os.path.dirname(path), exist_ok=True)
+			with open(path, "w") as f:
+				json.dump(out, f, indent=1, default=str)
+	except Exception:
+		frappe.log_error(title="hiper_solar: could not back up the Solar sidebars before migrate")
+
+
+def _link_key(item):
+	if item.get("type") == "Section Break":
+		return "section|" + (item.get("label") or "")
+	if item.get("link_type") == "URL":
+		return "url|" + (item.get("url") or "")
+	return (item.get("link_type") or "DocType") + "|" + (item.get("link_to") or "")
+
+
+def _merge_app_links(rows, app_items, known, sb_name):
+	"""Add links the app has and this site has never been offered, keeping the site's order."""
+	present = [_link_key(r) for r in rows]
+	for n, item in enumerate(app_items):
+		key = _link_key(item)
+		mark = sb_name + "::" + key
+		if key in present:
+			known.add(mark)
+			continue
+		if mark in known:
+			# offered on an earlier update and since removed by this site: leave it out
+			continue
+		pos = 0
+		for prev in reversed(app_items[:n]):
+			if _link_key(prev) in present:
+				pos = present.index(_link_key(prev)) + 1
+				break
+		is_section = item.get("type") == "Section Break"
+		rows.insert(
+			pos,
+			{
+				"enabled": 1,
+				"type": "Section Break" if is_section else "Link",
+				"label": item.get("label"),
+				"link_type": item.get("link_type") or "DocType",
+				"link_to": None if is_section else item.get("link_to"),
+				"url": item.get("url"),
+				"icon": item.get("icon"),
+				"child": 0 if is_section else (item.get("child") or 0),
+			},
+		)
+		present.insert(pos, key)
+		known.add(mark)
+	return rows
+
+
+def reapply_solar_settings():
+	"""Save Solar Settings once more after the fixtures are synced, so this site's own
+	sidebars, field changes, default print formats, names and switches are applied again."""
+	if not frappe.db.exists("DocType", "Solar Settings"):
+		return
+	path = _sidebar_backup_path()
+	try:
+		backup = {}
+		if os.path.exists(path):
+			with open(path) as f:
+				backup = json.load(f) or {}
+
+		app_sidebars = {}
+		fixture = os.path.join(os.path.dirname(__file__), "fixtures", "workspace_sidebar.json")
+		if os.path.exists(fixture):
+			with open(fixture) as f:
+				for sb in json.load(f):
+					app_sidebars[sb.get("name")] = sb.get("items") or []
+
+		doc = frappe.get_single("Solar Settings")
+		has_known = doc.meta.has_field("custom_known_app_links")
+		known = set(json.loads(doc.get("custom_known_app_links") or "[]") or []) if has_known else set()
+		names = _sidebar_names()
+
+		for field, _default in SIDEBAR_FIELDS:
+			if not doc.meta.has_field(field):
+				continue
+			sb_name = names[field]
+			rows = [dict({"enabled": r.enabled}, **{k: r.get(k) for k in SIDEBAR_ROW_KEYS}) for r in doc.get(field)]
+			if not rows and backup.get(sb_name):
+				rows = [dict({"enabled": 1}, **{k: i.get(k) for k in SIDEBAR_ROW_KEYS}) for i in backup[sb_name]]
+			if not rows:
+				# this site never had its own copy of this sidebar: the app's sidebar stays
+				continue
+			doc.set(field, _merge_app_links(rows, app_sidebars.get(sb_name, []), known, sb_name))
+
+		if has_known:
+			doc.custom_known_app_links = json.dumps(sorted(known), indent=1)
+
+		# Server scripts are switched off while a migrate runs; this one save has to run them,
+		# because they are what applies the settings. A link to something the update removed
+		# must not stop the save: the Apply script skips such links and lists them.
+		was_migrating = frappe.flags.in_migrate
+		frappe.flags.in_migrate = False
+		try:
+			doc.flags.ignore_links = True
+			doc.flags.ignore_mandatory = True
+			doc.save(ignore_permissions=True)
+		finally:
+			frappe.flags.in_migrate = was_migrating
+		frappe.db.commit()
+		if os.path.exists(path):
+			os.remove(path)
+	except Exception:
+		frappe.db.rollback()
+		frappe.log_error(title="hiper_solar: could not re-apply Solar Settings after migrate")

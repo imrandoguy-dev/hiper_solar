@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-10-23 16:35:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "original",
+  "show_as"
+ ],
+ "fields": [
+  {
+   "columns": 4,
+   "description": "Exactly as it appears on screen, e.g. KSEB Paper Works",
+   "fieldname": "original",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Original Text",
+   "reqd": 1
+  },
+  {
+   "columns": 4,
+   "fieldname": "show_as",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Show As",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-23 16:35:00.000000",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Solar Word",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
