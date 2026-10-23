@@ -209,6 +209,7 @@ SOLAR_CUSTOM_FIELDS = [
 	"Quotation-custom_print_images_panel",
 	"Quotation-custom_print_images",
 	"Quotation-custom_print_extra_pages",
+	"Quotation-custom_extra_pages_footer",
 	"Item-custom_warranty",
 	"Quotation Item-custom_print_section",
 	"Quotation Item-custom_print_qty",
@@ -288,6 +289,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Print Images - Get Slots",
 	"Print Images - Set Defaults",
 	"Print Images - Set Default Pages",
+	"Print Format - Auto Image Slots",
 	"Quotation - Fill Print Image Defaults",
 ]
 
@@ -339,6 +341,6 @@ fixtures = [
 	},
 	{
 		"dt": "Print Format",
-		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green", "Solar Quotation Green Compact", "Right Img"]]],
+		"filters": [["name", "in", ["Quotation Swiss", "Solar Quotation Green", "Solar Quotation Green Compact", "Right Img", "QPF3"]]],
 	},
 ]
