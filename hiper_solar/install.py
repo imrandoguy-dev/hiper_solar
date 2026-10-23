@@ -1,3 +1,6 @@
+import json
+import os
+
 import frappe
 from frappe.installer import update_site_config
 
@@ -8,10 +11,12 @@ def after_install():
 	enable_server_scripts()
 	create_module_defs()
 	ensure_crm_desktop_icon()
+	seed_solar_settings()
 
 
 def after_migrate():
 	ensure_crm_desktop_icon()
+	seed_solar_settings()
 
 
 def enable_server_scripts():
@@ -109,3 +114,80 @@ def ensure_crm_desktop_icon():
 		frappe.cache.delete_value("desktop_icons")
 	except Exception:
 		frappe.log_error(title="hiper_solar: could not create the Frappe CRM desktop icon")
+
+
+def seed_solar_settings():
+	"""Fill Solar Settings with the standard Create Buttons, Features, Approval Steps
+	and Solar Package sections the first time the app lands on a site.
+
+	Runs only while the Create Buttons table is empty, so a site that has already
+	set up its own Solar Settings is never touched. Everything is read from the
+	site as it is now, so seeding changes nothing on its own:
+	  - a Feature is listed only if at least one of its scripts exists here, and is
+	    marked On only if one of those scripts is already enabled;
+	  - an Approval Step is listed only if the Workflow exists, with its current
+	    Active state;
+	  - Create Buttons are listed only for documents that exist on this site;
+	  - the sectioned Solar Package layout starts switched off;
+	  - the Sidebar tab is left empty (use Load > Load Current Sidebar), so saving
+	    Solar Settings never rewrites a site's own sidebar by surprise.
+	"""
+	try:
+		if not frappe.db.exists("DocType", "Solar Settings"):
+			return
+		if frappe.db.count("Solar Create Button", {"parent": "Solar Settings"}):
+			return
+
+		path = os.path.join(
+			os.path.dirname(__file__), "solar", "doctype", "solar_settings", "solar_settings_defaults.json"
+		)
+		with open(path) as f:
+			defaults = json.load(f)
+
+		doc = frappe.get_single("Solar Settings")
+		doc.target_sidebar = doc.target_sidebar or "Solar"
+
+		for row in defaults.get("create_buttons", []):
+			if frappe.db.exists("DocType", row["document"]) and (
+				not row.get("creates") or frappe.db.exists("DocType", row["creates"])
+			):
+				doc.append("create_buttons", row)
+
+		def names(text):
+			return [n.strip() for n in (text or "").split("\n") if n.strip()]
+
+		for row in defaults.get("features", []):
+			client = [n for n in names(row.get("client_scripts")) if frappe.db.exists("Client Script", n)]
+			server = [n for n in names(row.get("server_scripts")) if frappe.db.exists("Server Script", n)]
+			if not client and not server:
+				continue
+			on = any(frappe.db.get_value("Client Script", n, "enabled") for n in client) or any(
+				not frappe.db.get_value("Server Script", n, "disabled") for n in server
+			)
+			doc.append("features", dict(row, enabled=1 if on else 0))
+
+		for wf in defaults.get("workflows", []):
+			if frappe.db.exists("Workflow", wf):
+				doc.append(
+					"workflows",
+					{
+						"workflow": wf,
+						"document_type": frappe.db.get_value("Workflow", wf, "document_type"),
+						"is_active": frappe.db.get_value("Workflow", wf, "is_active"),
+					},
+				)
+
+		package = defaults.get("package", {})
+		if doc.meta.has_field("custom_package_sections") and not doc.get("custom_package_sections"):
+			doc.custom_package_sections_enabled = 0
+			for key in ("custom_main_section_title", "custom_main_section_subtitle", "custom_main_section_color"):
+				if not doc.get(key):
+					doc.set(key, package.get(key))
+			for row in package.get("custom_package_sections", []):
+				doc.append("custom_package_sections", row)
+
+		doc.save(ignore_permissions=True)
+		frappe.db.commit()
+	except Exception:
+		frappe.db.rollback()
+		frappe.log_error(title="hiper_solar: could not seed Solar Settings")

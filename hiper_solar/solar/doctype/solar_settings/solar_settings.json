@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-10-23 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "create_tab",
+  "create_ui",
+  "create_buttons",
+  "sidebar_tab",
+  "target_sidebar",
+  "sidebar_help",
+  "sidebar_items",
+  "features_tab",
+  "features_ui",
+  "features",
+  "workflows_tab",
+  "workflows_ui",
+  "workflows"
+ ],
+ "fields": [
+  {
+   "fieldname": "create_tab",
+   "fieldtype": "Tab Break",
+   "label": "Create Buttons"
+  },
+  {
+   "fieldname": "create_ui",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "create_buttons",
+   "fieldtype": "Table",
+   "label": "Create Buttons (advanced)",
+   "options": "Solar Create Button"
+  },
+  {
+   "fieldname": "sidebar_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sidebar"
+  },
+  {
+   "default": "Solar",
+   "description": "The sidebar these rows are written to when you Save",
+   "fieldname": "target_sidebar",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Workspace Sidebar",
+   "options": "Workspace Sidebar",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sidebar_help",
+   "fieldtype": "HTML",
+   "options": "<div class='text-muted small' style='margin-bottom:8px'>Drag rows to change the order. Untick <b>Show</b> to hide an item. Add a <b>Section Break</b> row to start a group, then tick <b>Under Section</b> on the rows that belong to it. Click <b>Save</b> and reload the page to see the new sidebar. The <b>Solar Settings</b> link is always kept so you can get back here.</div>"
+  },
+  {
+   "fieldname": "sidebar_items",
+   "fieldtype": "Table",
+   "label": "Sidebar Items",
+   "options": "Solar Sidebar Link"
+  },
+  {
+   "fieldname": "features_tab",
+   "fieldtype": "Tab Break",
+   "label": "Features"
+  },
+  {
+   "fieldname": "features_ui",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "features",
+   "fieldtype": "Table",
+   "label": "Features (advanced)",
+   "options": "Solar Feature Switch"
+  },
+  {
+   "fieldname": "workflows_tab",
+   "fieldtype": "Tab Break",
+   "label": "Approval Steps"
+  },
+  {
+   "fieldname": "workflows_ui",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "workflows",
+   "fieldtype": "Table",
+   "label": "Workflows (advanced)",
+   "options": "Solar Workflow Switch"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-23 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Solar Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

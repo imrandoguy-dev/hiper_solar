@@ -221,6 +221,15 @@ SOLAR_CUSTOM_FIELDS = [
 	"Print Format-custom_image_slots",
 	"Print Format-custom_extra_pages",
 	"Bank Account-custom_branch",
+	# Solar Settings > Solar Package tab
+	"Solar Settings-custom_package_tab",
+	"Solar Settings-custom_package_ui",
+	"Solar Settings-custom_package_sections_enabled",
+	"Solar Settings-custom_main_section_title",
+	"Solar Settings-custom_main_section_subtitle",
+	"Solar Settings-custom_main_section_color",
+	"Solar Settings-custom_package_sections",
+	"Solar Package Template-custom_package_summary",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -261,6 +270,9 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Quotation - Load Solar Package",
 	"Quotation - Print Images",
 	"Quotation - Notes Template",
+	"Solar Settings - Form",
+	"Solar Settings - Package Sections",
+	"Solar Package Template - Sections",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
@@ -291,6 +303,10 @@ SOLAR_SERVER_SCRIPTS = [
 	"Print Images - Set Default Pages",
 	"Print Format - Auto Image Slots",
 	"Quotation - Fill Print Image Defaults",
+	"Solar Settings - Apply",
+	"Solar Settings - Create Menu API",
+	"Solar Settings - Package Sections",
+	"Solar Package - Sections API",
 ]
 
 SOLAR_WORKSPACES = [

@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-10-23 15:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "show",
+  "document",
+  "button",
+  "creates",
+  "source",
+  "notes",
+  "menu",
+  "new_section",
+  "show_when",
+  "when_field",
+  "when_value",
+  "column_break_new",
+  "link_field",
+  "copy_fields"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "show",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Show"
+  },
+  {
+   "columns": 2,
+   "fieldname": "document",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "On Document",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "description": "Text on the button, exactly as users see it",
+   "fieldname": "button",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Button",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "creates",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Creates",
+   "options": "DocType"
+  },
+  {
+   "columns": 1,
+   "default": "New",
+   "description": "Built-in / ERPNext = button already on this site (you can only show or hide it). New = a button added by these settings",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "New\nBuilt-in\nERPNext"
+  },
+  {
+   "columns": 2,
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "When it shows",
+   "read_only_depends_on": "eval:doc.source=='New'"
+  },
+  {
+   "default": "Create",
+   "description": "Create = inside the Create dropdown. Top Bar = its own button",
+   "fieldname": "menu",
+   "fieldtype": "Select",
+   "label": "Menu",
+   "options": "Create\nTop Bar"
+  },
+  {
+   "depends_on": "eval:doc.source=='New'",
+   "fieldname": "new_section",
+   "fieldtype": "Section Break",
+   "label": "New button settings"
+  },
+  {
+   "default": "Always",
+   "fieldname": "show_when",
+   "fieldtype": "Select",
+   "label": "Show When",
+   "options": "Always\nAfter Submit\nField has value"
+  },
+  {
+   "depends_on": "eval:doc.show_when=='Field has value'",
+   "description": "Fieldname on the document, e.g. status",
+   "fieldname": "when_field",
+   "fieldtype": "Data",
+   "label": "Field"
+  },
+  {
+   "depends_on": "eval:doc.show_when=='Field has value'",
+   "description": "e.g. Completed. Several: Completed, Approved",
+   "fieldname": "when_value",
+   "fieldtype": "Data",
+   "label": "Value"
+  },
+  {
+   "fieldname": "column_break_new",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Field on the new record that points back to this document. Blank = found automatically; if none, matched by Customer",
+   "fieldname": "link_field",
+   "fieldtype": "Data",
+   "label": "Link Field on New Record"
+  },
+  {
+   "description": "Comma separated. Always copied when both have them: customer, custom_lead, company, project, capacity_kw, system_type, district, village_city, mobile_number, email, site_address",
+   "fieldname": "copy_fields",
+   "fieldtype": "Small Text",
+   "label": "Extra Fields to Copy"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-23 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Solar",
+ "name": "Solar Create Button",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
