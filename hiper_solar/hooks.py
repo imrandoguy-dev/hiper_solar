@@ -329,6 +329,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Solar Settings - Forms, Stages and Names",
 	"Solar - Work Stages API",
 	"Hipersign Solar Inventory API",
+	"Solar - Customer Payment Request API",
 ]
 
 SOLAR_WORKSPACES = [
