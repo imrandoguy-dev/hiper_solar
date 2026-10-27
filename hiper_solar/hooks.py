@@ -328,6 +328,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Solar Package - Sections API",
 	"Solar Settings - Forms, Stages and Names",
 	"Solar - Work Stages API",
+	"Hipersign Solar Inventory API",
 ]
 
 SOLAR_WORKSPACES = [
@@ -335,6 +336,7 @@ SOLAR_WORKSPACES = [
 	"Solar Dashboard",
 	"Solar Support",
 	"Solar Support Dashboard",
+	"Solar Inventory",
 ]
 
 fixtures = [
@@ -366,7 +368,7 @@ fixtures = [
 	},
 	{
 		"dt": "Custom HTML Block",
-		"filters": [["name", "in", ["Solar Dashboard", "Customer Progress", "Support Dashboard"]]],
+		"filters": [["name", "in", ["Solar Dashboard", "Customer Progress", "Support Dashboard", "Solar Inventory"]]],
 	},
 	{
 		"dt": "Workspace",

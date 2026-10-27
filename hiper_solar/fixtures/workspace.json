@@ -366,5 +366,42 @@
   "shortcuts": [],
   "title": "Solar Dashboard",
   "type": "Workspace"
+ },
+ {
+  "app": null,
+  "charts": [],
+  "content": "[{\"id\":\"sinvblk01\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Solar Inventory\",\"col\":12}}]",
+  "custom_blocks": [
+   {
+    "custom_block_name": "Solar Inventory",
+    "label": "Solar Inventory"
+   }
+  ],
+  "custom_header_icon": null,
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "external_link": null,
+  "for_user": null,
+  "hide_custom": 0,
+  "icon": "package",
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Solar Inventory",
+  "link_to": null,
+  "link_type": "DocType",
+  "links": [],
+  "modified": "2026-10-27 09:28:37.598998",
+  "module": null,
+  "name": "Solar Inventory",
+  "number_cards": [],
+  "parent_page": null,
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Inventory",
+  "type": "Workspace"
  }
 ]

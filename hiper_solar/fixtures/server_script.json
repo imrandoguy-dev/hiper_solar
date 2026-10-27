@@ -625,5 +625,24 @@
   "reference_doctype": null,
   "script": "# Returns the Customer Work Stage order from Solar Settings > Work Stages.\n# Readable by every logged-in user (Solar Settings itself is System Manager only).\n# An empty list means: use the stages built into the dashboard.\ncint = frappe.utils.cint\nS = \"Solar Settings\"\nrows = []\nif frappe.db.exists(\"DocType\", \"Solar Work Stage\"):\n    rows = frappe.get_all(\n        \"Solar Work Stage\",\n        filters={\"parent\": S, \"parenttype\": S, \"parentfield\": \"custom_work_stages\"},\n        fields=[\"show\", \"title\", \"document\", \"icon\", \"optional\", \"status_field\", \"done_values\", \"customer_field\", \"key\"],\n        order_by=\"idx asc\",\n    )\nout = []\nfor r in rows:\n    out.append({\n        \"show\": cint(r.show),\n        \"key\": r.key,\n        \"title\": r.title,\n        \"doctype\": r.document,\n        \"icon\": r.icon or \"\",\n        \"optional\": cint(r.optional),\n        \"status_field\": r.status_field or \"\",\n        \"done_statuses\": [x.strip() for x in (r.done_values or \"\").split(\",\") if x.strip()],\n        \"customer_field\": r.customer_field or \"customer\",\n    })\nfrappe.response[\"message\"] = out\n",
   "script_type": "API"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": "hipersign_solar_inventory",
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2026-10-27 09:25:17.795258",
+  "module": "Solar",
+  "name": "Hipersign Solar Inventory API",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": null,
+  "script": "# Server Script (API) - method: hipersign_solar_inventory\n# Stock on hand per item and warehouse for the Solar \"Inventory\" page (same as the Fit Out Inventory view).\n# Items are grouped into Low / Enough / Plenty in the browser. Reads use frappe.get_list (respects permissions).\nbins = frappe.get_list(\"Bin\", fields=[\"item_code\", \"warehouse\", \"actual_qty\", \"reserved_qty\", \"ordered_qty\", \"stock_value\"],\n                       limit_page_length=50000)\ncodes = {}\nfor b in bins:\n    codes[b.item_code] = 1\ncode_list = list(codes.keys())\n\nimeta = frappe.get_meta(\"Item\")\nifields = [\"name\", \"item_name\", \"item_group\", \"image\", \"stock_uom\", \"safety_stock\", \"modified\"]\nhas_levels = 0\nfor f in [\"fo_low_stock_level\", \"fo_plenty_stock_level\"]:\n    if imeta.has_field(f):\n        ifields.append(f)\n        has_levels = 1\nitems = {}\ni = 0\nwhile i < len(code_list):\n    chunk = code_list[i:i + 500]\n    i = i + 500\n    rows = frappe.get_list(\"Item\", filters={\"name\": [\"in\", chunk], \"disabled\": 0, \"is_stock_item\": 1},\n                           fields=ifields, limit_page_length=1000)\n    for r in rows:\n        items[r.name] = {\"code\": r.name, \"name\": r.item_name or r.name, \"group\": r.item_group or \"\", \"image\": r.image or \"\",\n                         \"uom\": r.stock_uom or \"\", \"safety\": float(r.safety_stock or 0), \"levels\": {}, \"stock\": [], \"mod\": str(r.modified or \"\"),\n                         \"low\": float(r.get(\"fo_low_stock_level\") or 0), \"plenty\": float(r.get(\"fo_plenty_stock_level\") or 0)}\n\ntry:\n    reorders = frappe.get_list(\"Item Reorder\", filters={\"parent\": [\"in\", list(items.keys())]} if items else {\"parent\": \"__none__\"},\n                               fields=[\"parent\", \"warehouse\", \"warehouse_reorder_level\"], parent_doctype=\"Item\", limit_page_length=50000)\nexcept Exception:\n    reorders = []\nfor r in reorders:\n    if r.parent in items and r.warehouse:\n        items[r.parent][\"levels\"][r.warehouse] = float(r.warehouse_reorder_level or 0)\n\nused_wh = {}\nfor b in bins:\n    it = items.get(b.item_code)\n    if not it:\n        continue\n    it[\"stock\"].append([b.warehouse, float(b.actual_qty or 0), float(b.reserved_qty or 0), float(b.ordered_qty or 0), float(b.stock_value or 0)])\n    used_wh[b.warehouse] = 1\n\nwhs = []\nif used_wh:\n    for w in frappe.get_list(\"Warehouse\", filters={\"name\": [\"in\", list(used_wh.keys())]}, fields=[\"name\", \"warehouse_name\", \"company\"],\n                             order_by=\"name asc\", limit_page_length=5000):\n        whs.append({\"name\": w.name, \"label\": w.warehouse_name or w.name, \"company\": w.company or \"\"})\n\nout = []\nfor k in items:\n    if items[k][\"stock\"]:\n        out.append(items[k])\n\ngroups = {}\nfor x in out:\n    if x[\"group\"]:\n        groups[x[\"group\"]] = 1\nglist = list(groups.keys())\nglist.sort()\n\nfrappe.response[\"message\"] = {\"items\": out, \"warehouses\": whs, \"groups\": glist, \"default_level\": 10, \"plenty_factor\": 3, \"has_levels\": has_levels}\n",
+  "script_type": "API"
  }
 ]
