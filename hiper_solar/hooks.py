@@ -248,6 +248,11 @@ SOLAR_CUSTOM_FIELDS = [
 	"Solar Settings-custom_words",
 	"Solar Settings-custom_applied_state",
 	"Solar Settings-custom_known_app_links",
+	"Solar Settings-custom_updates_tab",
+	"Solar Settings-custom_updates_ui",
+	"Solar Settings-custom_reset_to_app",
+	"Solar Settings-custom_use_app_version",
+	"Solar Settings-custom_update_log",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -292,6 +297,7 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Solar Settings - Package Sections",
 	"Solar Package Template - Sections",
 	"Solar Settings - Forms, Stages and Names",
+	"Solar Settings - App Updates",
 ]
 
 SOLAR_SERVER_SCRIPTS = [

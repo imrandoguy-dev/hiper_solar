@@ -4,6 +4,8 @@ import os
 import frappe
 from frappe.installer import update_site_config
 
+from hiper_solar import keep_site_changes
+
 MODULES = ["Solar", "Solar Support"]
 
 
@@ -15,12 +17,17 @@ def after_install():
 
 
 def before_migrate():
+	# the app's fixtures are about to be imported over the site's copies:
+	# save what this site changed itself, so after_migrate can put it back
+	keep_site_changes.snapshot()
 	backup_sidebars()
 
 
 def after_migrate():
 	ensure_crm_desktop_icon()
 	seed_solar_settings()
+	# first this site's own changes to app records, then Solar Settings on top
+	keep_site_changes.restore()
 	reapply_solar_settings()
 
 
