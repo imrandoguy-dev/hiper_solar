@@ -42,7 +42,6 @@
    "label": "Sidebar"
   },
   {
-   "default": "Solar",
    "description": "The sidebar these rows are written to when you Save",
    "fieldname": "target_sidebar",
    "fieldtype": "Link",
