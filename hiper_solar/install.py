@@ -21,6 +21,7 @@ def before_migrate():
 	# save what this site changed itself, so after_migrate can put it back
 	keep_site_changes.snapshot()
 	backup_sidebars()
+	backup_status_colours()
 
 
 def after_migrate():
@@ -345,6 +346,8 @@ def reapply_solar_settings():
 		if has_known:
 			doc.custom_known_app_links = json.dumps(sorted(known), indent=1)
 
+		_keep_status_colours(doc)
+
 		# Server scripts are switched off while a migrate runs; this one save has to run them,
 		# because they are what applies the settings. A link to something the update removed
 		# must not stop the save: the Apply script skips such links and lists them.
@@ -359,6 +362,70 @@ def reapply_solar_settings():
 		frappe.db.commit()
 		if os.path.exists(path):
 			os.remove(path)
+		if os.path.exists(_status_colour_backup_path()):
+			os.remove(_status_colour_backup_path())
 	except Exception:
 		frappe.db.rollback()
 		frappe.log_error(title="hiper_solar: could not re-apply Solar Settings after migrate")
+
+
+# ---------------------------------------------------------------------------
+# Status colours
+# ---------------------------------------------------------------------------
+# Workflow States ship as fixtures, so every migrate puts each status back to the app's
+# colour. Solar Settings > Status Colours holds the site's own colours and its server script
+# applies them on every save, including the save in reapply_solar_settings above.
+# A site that changed a colour by hand before it had that table would still lose it on the
+# update that brings the table in, so before_migrate also copies every status colour, and
+# any colour the fixtures just changed is added to the table before that save.
+
+STYLE_TO_COLOUR = {
+	"": "Grey",
+	"Primary": "Blue",
+	"Info": "Light Blue",
+	"Success": "Green",
+	"Warning": "Orange",
+	"Danger": "Red",
+	"Inverse": "Black",
+}
+
+
+def _status_colour_backup_path():
+	return frappe.get_site_path("private", "hiper_solar_status_colours.json")
+
+
+def backup_status_colours():
+	"""Copy every status colour as this site has it, before the app's fixtures replace them."""
+	try:
+		styles = {}
+		for ws in frappe.get_all("Workflow State", fields=["name", "style"]):
+			styles[ws.name] = ws.style or ""
+		path = _status_colour_backup_path()
+		os.makedirs(os.path.dirname(path), exist_ok=True)
+		with open(path, "w") as f:
+			json.dump(styles, f, indent=1)
+	except Exception:
+		frappe.log_error(title="hiper_solar: could not back up status colours before migrate")
+
+
+def _keep_status_colours(doc):
+	"""Add a Status Colours row for every status whose colour the update just changed and the
+	table does not list yet, with the colour the site had, so the save puts it back."""
+	if not doc.meta.has_field("custom_status_colours"):
+		return
+	path = _status_colour_backup_path()
+	if not os.path.exists(path):
+		return
+	try:
+		with open(path) as f:
+			before = json.load(f) or {}
+	except Exception:
+		return
+	listed = {r.status for r in doc.get("custom_status_colours") if r.status}
+	for name, style in before.items():
+		if name in listed or not frappe.db.exists("Workflow State", name):
+			continue
+		now_style = frappe.db.get_value("Workflow State", name, "style") or ""
+		if (style or "") == now_style:
+			continue
+		doc.append("custom_status_colours", {"status": name, "colour": STYLE_TO_COLOUR.get(style or "", "Grey")})

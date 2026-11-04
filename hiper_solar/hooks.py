@@ -253,6 +253,10 @@ SOLAR_CUSTOM_FIELDS = [
 	"Solar Settings-custom_reset_to_app",
 	"Solar Settings-custom_use_app_version",
 	"Solar Settings-custom_update_log",
+	# Solar Settings > Status Colours
+	"Solar Settings-custom_status_colours_tab",
+	"Solar Settings-custom_status_colours_ui",
+	"Solar Settings-custom_status_colours",
 ]
 
 SOLAR_CLIENT_SCRIPTS = [
@@ -298,6 +302,7 @@ SOLAR_CLIENT_SCRIPTS = [
 	"Solar Package Template - Sections",
 	"Solar Settings - Forms, Stages and Names",
 	"Solar Settings - App Updates",
+	"Solar Settings - Status Colours",
 ]
 
 SOLAR_SERVER_SCRIPTS = [
@@ -336,6 +341,7 @@ SOLAR_SERVER_SCRIPTS = [
 	"Solar - Work Stages API",
 	"Hipersign Solar Inventory API",
 	"Solar - Customer Payment Request API",
+	"Solar Settings - Status Colours",
 ]
 
 SOLAR_WORKSPACES = [
